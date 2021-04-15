@@ -14,12 +14,12 @@ public class WelcomeResource {
 
     @GetMapping
     public String welcome(Principal principal) {
-        Map<String, Object> authDetails = (Map<String, Object>) ((OAuth2Authentication) principal)
+        Map<String, String> authDetails = (Map<String, String>) ((OAuth2Authentication) principal)
                 .getUserAuthentication()
                 .getDetails();
 
-        String userName = (String) authDetails.get("name");
+        String userName = authDetails.get("name");
 
-        return "Hey " + userName + ", Welcome to Daily Code Buffer!!";
+        return "Hello " + userName + ", Welcome to Spring Boot Oauth2 with Facebook!";
     }
 }
